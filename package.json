@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "server": "node server/index.js | npm run start",
     "devserver": "nodemon server/index.js | npm run start",
-    "testserver": "echo \"Error: no test specified\" && exit 1"
+    "testserver": "echo \"Error: no test specified\" && exit 1",
+    "te": "nodemon server/index.js"
   },
   "private": true,
   "dependencies": {
