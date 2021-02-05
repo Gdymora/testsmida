@@ -7,5 +7,11 @@ DataProvider = function () {
     this.getDataProvider = function () {
         return readFile(dataPath, 'utf8');
     }
+
+    this.setDataProvider = function () {
+        return readFile(dataPath, 'utf8');
+        // return writeFile(dataPath, 'utf8');
+    }
+
 };
 module.exports.DataProvider = DataProvider;
