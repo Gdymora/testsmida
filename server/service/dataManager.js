@@ -1,15 +1,11 @@
- module.exports = function (app) {
-    var DataProvider = require ('./dataProvider').DataProvider;
-    var dataProvider = new DataProvider();
+module.exports = function (app) {
 
+    const DataProvider = require('./dataProvider').DataProvider;
+    const dataProvider = new DataProvider();
 
-    app.get('/', (req, res) => {
-        console.log("date",dataProvider.getDataProvider());
-     res.send(dataProvider.getDataProvider());
-    });
-    app.get('/data', (req, res) => {
-        return res.send('Received a GET HTTP methodw');
-       
+    app.get('/', async (req, res) => {
+        let data = await dataProvider.getDataProvider();
+        res.send(data);
     });
 
     app.post('/', (req, res) => {

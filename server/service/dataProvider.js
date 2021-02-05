@@ -1,16 +1,11 @@
 DataProvider = function () {
     const fs = require('fs');
+    const util = require('util');
     const dataPath = './server/model/test_data.json';
+    const readFile = util.promisify(fs.readFile);
 
     this.getDataProvider = function () {
-
-    var data_json =  fs.readFileSync(dataPath, 'utf8', (err, data) => {
-            if (err) {
-                throw err;
-            }
-            return data;
-        });    
-        return data_json
+        return readFile(dataPath, 'utf8');
     }
 };
 module.exports.DataProvider = DataProvider;
