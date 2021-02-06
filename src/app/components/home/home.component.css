@@ -1,0 +1,10 @@
+.user-info {
+    padding: 1em;
+    margin: 1em;
+    background: rgb(247, 244, 244, 0.4);
+}
+
+table {
+    width: 100%;
+    background: rgba(247, 244, 244, 0.9);
+}
