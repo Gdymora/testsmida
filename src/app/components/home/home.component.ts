@@ -5,25 +5,31 @@ import { MatPaginator, } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormGroup, FormControl } from '@angular/forms';
 
+export class FilterData {
+  reportState: string;
+  termType: string;
+  publicationType: string;
+  reportGroup: string;
+  outputNumber: string;
+  reportFormat: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 
+
 export class HomeComponent implements AfterViewInit {
   dataSource;
-  dataUser: DataUser[] = [];
+
   uniquePublicationType: DataUser[] = [];
   uniqueTermType: DataUser[] = [];
   uniqueReportGroup: DataUser[] = [];
   uniqueReportState: DataUser[] = [];
   uniqueReportFormat: DataUser[] = [];
-
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl()
-  });
+  filter: FilterData = new FilterData();
 
   constructor(private apiUserService: ApiUserService) { }
 
@@ -51,4 +57,7 @@ export class HomeComponent implements AfterViewInit {
     this.apiUserService.deleteDataUser(idSubject);
   }
 
+  onRemove() {
+    console.log(this.filter);
+  }
 }

@@ -14,15 +14,10 @@
             <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field appearance="fill">
                     <mat-label>Тип публікації</mat-label>
-                    <mat-select multiple>
-
-                        <mat-select-trigger>
-                            {{toppings.value ? toppings.value[0] : ''}}
-                            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                            </span>
-                        </mat-select-trigger>
-                        <mat-option *ngFor="let topping of uniquePublicationType " [value]="topping">{{topping}}
+                    <mat-select multiple [(ngModel)]="filter.publicationType" (ngModelChange)="filter.publicationType"
+                        (ngModelChange)="onRemove()">
+                        <mat-option *ngFor="let topping of uniquePublicationType " [value]="topping">
+                            {{topping}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -35,13 +30,8 @@
             <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field appearance="fill">
                     <mat-label>Періодичність</mat-label>
-                    <mat-select multiple>
-                        <mat-select-trigger>
-                            {{toppings.value ? toppings.value[0] : ''}}
-                            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                            </span>
-                        </mat-select-trigger>
+                    <mat-select multiple [(ngModel)]="filter.termType" (ngModelChange)="filter.termType"
+                        (ngModelChange)="onRemove()">
                         <mat-option *ngFor="let topping of uniqueTermType " [value]="topping">{{topping}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -54,13 +44,9 @@
             <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field appearance="fill">
                     <mat-label>Категорія суб'єкта</mat-label>
-                    <mat-select multiple>
-                        <mat-select-trigger>
-                            {{toppings.value ? toppings.value[0] : ''}}
-                            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                            </span>
-                        </mat-select-trigger>
+                    <mat-select multiple [(ngModel)]="filter.reportGroup" (ngModelChange)="filter.reportGroup"
+                        (ngModelChange)="onRemove()">
+
                         <mat-option *ngFor="let topping of uniqueReportGroup " [value]="topping">{{topping}}
                         </mat-option>
                     </mat-select>
@@ -74,13 +60,8 @@
             <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field appearance="fill">
                     <mat-label>Статус</mat-label>
-                    <mat-select multiple>
-                        <mat-select-trigger>
-                            {{toppings.value ? toppings.value[0] : ''}}
-                            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                            </span>
-                        </mat-select-trigger>
+                    <mat-select multiple [(ngModel)]="filter.reportState" (ngModelChange)="filter.reportState"
+                        (ngModelChange)="onRemove()">
                         <mat-option *ngFor="let topping of uniqueReportState " [value]="topping">{{topping}}
                         </mat-option>
                     </mat-select>
@@ -94,13 +75,8 @@
             <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field appearance="fill">
                     <mat-label>Тип файлу</mat-label>
-                    <mat-select multiple>
-                        <mat-select-trigger>
-                            {{toppings.value ? toppings.value[0] : ''}}
-                            <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
-                                (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                            </span>
-                        </mat-select-trigger>
+                    <mat-select multiple [(ngModel)]="filter.reportFormat" (ngModelChange)="filter.reportFormat"
+                        (ngModelChange)="onRemove()">
                         <mat-option *ngFor="let topping of uniqueReportFormat " [value]="topping">{{topping}}
                         </mat-option>
                     </mat-select>
@@ -115,15 +91,12 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Вихідна дата документу</mat-label>
                     <mat-date-range-input [rangePicker]="picker">
-                        <input matStartDate formControlName="start" placeholder="Start">
-                        <input matEndDate formControlName="end" placeholder="End">
+                        <input matStartDate placeholder="Start">
+                        <input matEndDate placeholder="End">
                     </mat-date-range-input>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-date-range-picker #picker></mat-date-range-picker>
 
-                    <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date
-                    </mat-error>
-                    <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                 </mat-form-field>
 
             </th>
@@ -134,9 +107,9 @@
         <ng-container matColumnDef="outputNumber">
             <th mat-header-cell *matHeaderCellDef>
                 <mat-form-field appearance="fill">
-
                     <mat-label>Вихідний номер документу</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="filter.outputNumber" (ngModelChange)="filter.outputNumber"
+                    (change)="onRemove()">
                 </mat-form-field>
             </th>
             <td mat-cell *matCellDef="let element"> {{element.outputNumber}} </td>
