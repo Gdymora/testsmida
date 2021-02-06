@@ -1,8 +1,14 @@
 export interface DataUser {
-    publicationType: string,
-    termType: string,
-    reportGroup: string,
+    idReport: number,
+    idSubject: number,
     reportState: string,
-    reportFormat: { date: string },
+    termType: string,
+    publicationType: string,
+    reportGroup: string,
     outputNumber: string,
+    outputDate: { date: string, timezone_type: number, timezone: string, },
+    bSentToNSSMC: boolean, 
+    bDisclosure: boolean, 
+    dateFill: { date: string, timezone_type: number, timezone: string, },
+    reportFormat: string,
 }
