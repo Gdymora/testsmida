@@ -1,6 +1,14 @@
-<div class="user-info" >
-    <table mat-table [dataSource]="dataSource">
+<div class="user-info">
+    <div>
+        <button style="float: left; margin-right: 1em;" class="button-menu" mat-mini-fab color="primary" mat-button>
+            <span class="material-icons md-24 md-light"> history </span>
+        </button>
 
+        <h1 style="display: inline;">Історія розміщення моєї інформації</h1>
+        <p>Увага! були внесені зміни до Договору публічної оферти</p>
+    </div>
+
+    <table mat-table [dataSource]="dataSource">
         <!-- publicationType Column -->
         <ng-container matColumnDef="publicationType">
             <th mat-header-cell *matHeaderCellDef> Тип публікації </th>
@@ -37,8 +45,8 @@
             <td mat-cell *matCellDef="let element"> {{element.outputDate.date}} </td>
         </ng-container>
 
-          <!-- reportFormat Column -->
-          <ng-container matColumnDef="outputNumber">
+        <!-- reportFormat Column -->
+        <ng-container matColumnDef="outputNumber">
             <th mat-header-cell *matHeaderCellDef> Вихідний номер документу </th>
             <td mat-cell *matCellDef="let element"> {{element.outputNumber}} </td>
         </ng-container>
@@ -48,6 +56,6 @@
     </table>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-   
+
 
 </div>

@@ -35,10 +35,12 @@
 
 .example-sidenav-content {
     display: flex;
-    height: 100%;
-    align-items: center;
+    height: 80%;
+    margin:auto;
+    align-items: top;
     justify-content: center;
-    background: url("../../../assets/img/header.jpg") no-repeat top;
+    background: url("../../../assets/img/header.jpg") no-repeat;
+    background-size: cover; 
     opacity: 0.9;
 }
 
