@@ -8,3 +8,28 @@ table {
     width: 100%;
     background: rgba(247, 244, 244, 0.9);
 }
+.mat-cell {
+    font-size: 12px;
+}
+
+.mat-header-cell{
+    font-size: 11px;
+padding: 3px;
+margin: 3px;
+}
+
+.hint:hover {
+    border-radius: 50%;
+    -moz-box-shadow: 3px 3px 2px #ccc;
+    -webkit-box-shadow: 3px 3px 2px #ccc;
+    box-shadow: 3px 3px 5px 2px #ccc;
+}
+
+.hint {
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
+}
+
