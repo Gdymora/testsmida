@@ -57,7 +57,12 @@ export class HomeComponent implements AfterViewInit {
     this.apiUserService.deleteDataUser(idSubject);
   }
 
+  onRemover(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
   onRemove() {
-    console.log(this.filter);
+    
   }
 }

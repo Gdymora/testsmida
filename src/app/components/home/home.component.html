@@ -109,7 +109,7 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Вихідний номер документу</mat-label>
                     <input matInput [(ngModel)]="filter.outputNumber" (ngModelChange)="filter.outputNumber"
-                    (change)="onRemove()">
+                    (keyup)="onRemover($event.target.value)">
                 </mat-form-field>
             </th>
             <td mat-cell *matCellDef="let element"> {{element.outputNumber}} </td>

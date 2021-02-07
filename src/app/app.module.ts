@@ -25,13 +25,14 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ApplicationComponent,
     HeaderComponent,
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
