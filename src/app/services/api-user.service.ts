@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from  'rxjs';
-
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,12 +15,14 @@ export class ApiUserService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getDataUser(): Observable<any> {
-    return this.httpClient.get(`${this.API}`);
+  postFile(fileToUpload: File): Observable<Object> {   
+    const formData: FormData = new FormData();
+    formData.append('picture', fileToUpload);
+    return this.httpClient.post(`${this.API}/upload`, formData).pipe( map(() => { return true; }));
   }
 
-  deleteDataUser(delete_id: number): Observable<any> {
-    return this.httpClient.get(`${this.DELETE_API_USER}/${delete_id}`);
+  getFiles(): Observable<any> {
+    return this.httpClient.get(`${this.API}/files`);
   }
 
 
